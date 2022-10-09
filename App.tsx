@@ -9,20 +9,23 @@
  */
 
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
+import BalanceCard from './screens/utils/card/balance';
+import HistoryList from './screens/utils/txhistorylist/txhistorylist';
 
 function App() {
 
   return(
-
-    <View style={style.home}>
-      <Text>Hello wold</Text>
-    </View>
+        <View style={style.home} >
+          <BalanceCard Salute='Hi there' Price={53}/>
+          <HistoryList />
+        </View>
   )
 }
 const style = StyleSheet.create({
   home : {
-    justifyContent: "center",
+    marginTop : 80,
+    // justifyContent: "center", test uncomment when add nav top bar
     flex : 1,
     alignItems : 'center',
   }
