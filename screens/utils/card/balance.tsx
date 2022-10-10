@@ -38,8 +38,6 @@ const style = StyleSheet.create({
         fontSize : 60,
         fontWeight : 'bold',
     }
-
-
 });
 
 
