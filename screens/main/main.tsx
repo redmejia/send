@@ -83,16 +83,10 @@ function Main() {
                   position: 'absolute',
                   borderTopWidth: 0,
               },
-            headerStyle: {
-                backgroundColor : "#16F06D",
+              headerStyle: {
+                  backgroundColor : "#16F06D",
               }
-
-            
-
-              
             })}
-
-            
         >
             <BottomTab.Screen name="home" component={Home}
                 options={{title: ""}} 
