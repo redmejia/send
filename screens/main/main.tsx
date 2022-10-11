@@ -1,58 +1,60 @@
 import React from "react";
-import Home from "../Home/Home";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from '@react-navigation/native';
 import Send from "../Send/Send";
 import { Image, View } from "react-native";
+import Trasaction from "../Transaction/Transaction";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import TxHome from "../TxHome/TxHome";
 
-const BottomTab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator()
 
-function Main() {
-    return(
-        <NavigationContainer>
-        <BottomTab.Navigator
-            
+const TabBottom = () => {
+    return (
+        <Tab.Navigator
+
             screenOptions={({ route }) => ({
-                headerShown: true,
-                tabBarIcon : () => {
+                headerShown: false,
+                tabBarIcon: () => {
 
                     if (route.name === "home") {
-                        return(
+                        return (
                             <View
-                            style={{
-                                marginTop : 20,
-                            }}
-                        >
-                             <Image 
+                                style={{
+                                    marginTop: 20,
+                                }}
+                            >
+                                <Image
                                     source={require('../public/hometx.png')}
                                 />
-                               
+
                             </View>
                         )
-                        
+
                     }
 
                     if (route.name === "send2") {
-                        return(
+                        return (
                             <View
                                 style={{
-                                    marginTop : 20,
+                                    marginTop: 20,
                                 }}
                             >
-                                <Image 
+                                <Image
                                     source={require('../public/gift.png')}
                                 />
                             </View>
                         )
                     }
                     if (route.name === "send-money") {
-                        return(
-                        <View
+                        return (
+                            <View
                                 style={{
-                                    marginTop : -10,
+                                    marginTop: -10,
                                 }}
                             >
-                                <Image 
+                                <Image
                                     source={require('../public/sendcircle.png')}
                                 />
                             </View>
@@ -60,51 +62,78 @@ function Main() {
                     }
 
                     if (route.name === "send") {
-                        return(
+                        return (
                             <View
                                 style={{
-                                    marginTop : 20,
+                                    marginTop: 20,
                                 }}
                             >
-                                <Image 
+                                <Image
                                     source={require('../public/coins.png')}
                                 />
                             </View>
                         )
                     }
-                    
+
                 },
-                
+
+
+
                 tabBarStyle: {
-                  height: 90,
-                  paddingHorizontal: 5,
-                  paddingTop: 0,
-                  backgroundColor: '#16F06D',
-                  position: 'absolute',
-                  borderTopWidth: 0,
-              },
-              headerStyle: {
-                  backgroundColor : "#16F06D",
-              }
+                    //  height: 100,
+                    paddingHorizontal: 5,
+                    paddingTop: 10,
+                    backgroundColor: '#16F06D',
+                    //  position: 'absolute',
+                    borderTopWidth: 0,
+                },
+                headerStyle: {
+                    //  backgroundColor: "#16F06D",
+                    backgroundColor: "#00000"
+                }
             })}
         >
-            <BottomTab.Screen name="home" component={Home}
-                options={{title: ""}} 
-
-            /> 
-             <BottomTab.Screen name="send2" component={Send}
-               options={{title : ""}} 
+            <Tab.Screen name="home" component={TxHome}
+                options={{ title: "" }}
 
             />
-             <BottomTab.Screen name="send-money" component={Send}
-               options={{title : ""}} 
+            <Tab.Screen name="send2" component={Send}
+                options={{ title: "" }}
 
-            />  
-            <BottomTab.Screen name="send" component={Send}
-                    options={{title: ""}}
-            /> 
+            />
+            <Tab.Screen name="send-money" component={Send}
+                options={{ title: "" }}
 
-        </BottomTab.Navigator>
+            />
+            <Tab.Screen name="send" component={Send}
+                options={{ title: "" }}
+            />
+
+        </Tab.Navigator>
+    )
+}
+
+function Main() {
+
+    const RootTab = (props: any) => (<TabBottom {...props} />)
+    return (
+        <NavigationContainer>
+            <Stack.Navigator
+                screenOptions={
+                    {
+                        headerStyle: {
+                            backgroundColor: "#16F06D",
+                        }
+                    }
+                }
+            >
+                <Stack.Screen
+                    name="Send"
+                    component={RootTab}
+
+                />
+                <Stack.Screen name="TX" component={Trasaction} />
+            </Stack.Navigator>
         </NavigationContainer>
     );
 }

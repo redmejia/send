@@ -4,11 +4,11 @@ import { ICardData } from "./ibalance";
 
 
 
-function BalanceCard({Salute, Price}: ICardData) {
+function BalanceCard({Title, Price}: ICardData) {
     return(
         <View style={style.card}> 
             <View style={style.cardBody}>
-                <Text style={style.cardTextSmall}>{Salute}</Text>
+                <Text style={style.cardTextSmall}>{Title}</Text>
                 <Text style={style.cardTextBig}>${Price}</Text> 
             </View>
         </View>

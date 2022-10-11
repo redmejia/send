@@ -14,7 +14,7 @@ import { ListData } from "./ilist";
 function Item({data, isSendList}: {data : ListData, isSendList : boolean}) {
    let text : JSX.Element;
    if (isSendList) {
-      text = <Text>@{data.Name}</Text>
+      text = <Text style={style.itemText}>@{data.Name}</Text>
     }else {
         // status code 2 send to 
         // status code 1 recive from
@@ -27,25 +27,24 @@ function Item({data, isSendList}: {data : ListData, isSendList : boolean}) {
     ); 
 }
 
-function List({isSendList, DATA} :{ isSendList: boolean, DATA : ListData[]}) {
+function List({title, data, renderItem} :{title : string, data : ListData[], renderItem :ListRenderItem<ListData>}) {
     
-
-    const renderItem : ListRenderItem<ListData> = ({item}) => <Item isSendList={isSendList} data={item}   />
-
     return( 
-            <View style={style.container}>
+            <View style={style.containerList}>
+                <Text style={style.titleText}>{title}</Text>
                 <FlatList
-                    data={DATA}
+                    data={data}
                     renderItem={renderItem}
                     // keyExtractor={({item}: {item :ListData}) => item.Amount}
                     />
-            </View>
+             </View>
     );    
 };
 
 const style = StyleSheet.create({
-    container : {
-        height : 425,
+    containerList : {
+        flex: 1,
+        alignItems : 'center',
     },
     itemBox : {
         width : 360,
@@ -55,9 +54,17 @@ const style = StyleSheet.create({
         marginVertical : 1,
         borderRadius : 4,
     },
+    titleText : {
+        fontSize: 20,
+        fontWeight:"800",
+        marginBottom : 2,
+        // flex : 1,
+        alignItems : 'center',
+        alignContent: 'center'
+    },
     itemText : {
         color : '#16F06D'
-    }
+    },
 
 })
 

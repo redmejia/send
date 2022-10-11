@@ -1,5 +1,5 @@
 export interface ICardData  {
-    Salute? : string
+    Title? : string
     Price : number,
 }
 
