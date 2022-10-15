@@ -6,6 +6,7 @@ import { Image, View } from "react-native";
 import Trasaction from "../Transaction/Transaction";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TxHome from "../TxHome/TxHome";
+import Gift from "../Gift/Gift";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator()
@@ -97,7 +98,7 @@ const TabBottom = () => {
                 options={{ title: "" }}
 
             />
-            <Tab.Screen name="send2" component={Send}
+            <Tab.Screen name="send2" component={Gift}
                 options={{ title: "" }}
 
             />
@@ -132,7 +133,7 @@ function Main() {
                     component={RootTab}
 
                 />
-                <Stack.Screen name="TX" component={Trasaction} />
+                <Stack.Screen name="Transaction" component={Trasaction} />
             </Stack.Navigator>
         </NavigationContainer>
     );

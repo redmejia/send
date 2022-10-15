@@ -24,7 +24,7 @@ function RenderItem({ data, navigation }: { data: ListData, navigation : any  })
         <TouchableOpacity style={style.itemBox}
             onPress={() => {
                 console.log("was presed", data.id);
-                navigation.navigate("TX", {tx : data})
+                navigation.navigate("Transaction", {tx : data})
             }}
         >
             <Text style={style.itemBoxText}>@{data.Name}</Text>
@@ -42,7 +42,7 @@ function Send() {
             />
             <View style={style.itemsBoxList}>
                 <List
-                    title="Sent To"
+                    title="Send To"
                     data={DATA}
                     renderItem={({ item }) => <RenderItem 
                     navigation={navigation}

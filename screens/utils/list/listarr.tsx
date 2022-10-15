@@ -8,26 +8,8 @@ import {
     View 
 } from "react-native";
 
-import { ListData } from "./ilist";
 
-
-function Item({data, isSendList}: {data : ListData, isSendList : boolean}) {
-   let text : JSX.Element;
-   if (isSendList) {
-      text = <Text style={style.itemText}>@{data.Name}</Text>
-    }else {
-        // status code 2 send to 
-        // status code 1 recive from
-       text = data.TxStatus === 1 ? <Text style={style.itemText}>recive ${data.Amount} from @{data.Name}</Text> :  <Text style={style.itemText}>send ${data.Amount} to @{data.Name}</Text> 
-    }
-    return (
-        <View style={style.itemBox}>
-           {text}
-        </View>
-    ); 
-}
-
-function List({title, data, renderItem} :{title : string, data : ListData[], renderItem :ListRenderItem<ListData>}) {
+function List({title, data, renderItem} :{title : string, data : any[], renderItem :ListRenderItem<any>}) {
     
     return( 
             <View style={style.containerList}>
