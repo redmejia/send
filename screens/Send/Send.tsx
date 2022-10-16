@@ -18,13 +18,12 @@ const DATA: ListData[] = [
     { id: 10, Name: "Monica" },
 ]
 
-function RenderItem({ data, navigation }: { data: ListData, navigation : any  }): JSX.Element {
-    
+function RenderItem({ data, navigation }: { data: ListData, navigation: any }): JSX.Element {
+
     return (
         <TouchableOpacity style={style.itemBox}
             onPress={() => {
-                console.log("was presed", data.id);
-                navigation.navigate("Transaction", {tx : data})
+                navigation.navigate("Transaction", { tx: data })
             }}
         >
             <Text style={style.itemBoxText}>@{data.Name}</Text>
@@ -44,9 +43,9 @@ function Send() {
                 <List
                     title="Send To"
                     data={DATA}
-                    renderItem={({ item }) => <RenderItem 
-                    navigation={navigation}
-                    data={item} />}
+                    renderItem={({ item }) => <RenderItem
+                        navigation={navigation}
+                        data={item} />}
                 />
             </View>
         </View>

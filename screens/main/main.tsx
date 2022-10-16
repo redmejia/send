@@ -7,6 +7,7 @@ import Trasaction from "../Transaction/Transaction";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TxHome from "../TxHome/TxHome";
 import Gift from "../Gift/Gift";
+import SendGiftCard from "../SendGiftCard/SendGiftCard";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator()
@@ -134,6 +135,7 @@ function Main() {
 
                 />
                 <Stack.Screen name="Transaction" component={Trasaction} />
+                <Stack.Screen name="Send Gift" component={SendGiftCard} />
             </Stack.Navigator>
         </NavigationContainer>
     );

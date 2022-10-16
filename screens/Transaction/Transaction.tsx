@@ -1,6 +1,6 @@
 import { useRoute } from "@react-navigation/native";
-import React, { startTransition, useState } from 'react';
-import { TextInput, StyleSheet, Button, View, TouchableOpacity, Text } from "react-native";
+import React, {  useState } from 'react';
+import { TextInput, StyleSheet, View, TouchableOpacity, Text } from "react-native";
 import Badge from "../utils/badge/badge";
 
 
@@ -13,10 +13,13 @@ function Trasaction() {
 
     const { tx }: any = r.params;
 
+    let myAmount : string =  "53.00";
+    
     return (
 
         <View style={styles.container}>
-            <Badge title="$ 899" />
+
+            <Badge Title={`$${myAmount}`} style={{width : myAmount.length* 16}} />
             <View style={styles.sendToBox} >
                 <Text style={styles.textSendTo}>{tx.Name}</Text>
             </View>
