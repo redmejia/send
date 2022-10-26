@@ -1,7 +1,8 @@
 import { useRoute } from "@react-navigation/native";
 import React, { useState } from "react";
-import { StyleSheet, Modal, View, Text, Button, TouchableNativeFeedbackComponent, TouchableOpacity } from "react-native";
+import { StyleSheet, Modal, View, Text, TouchableOpacity } from "react-native";
 import BusinessCard from "../utils/card/business";
+import { IBusinessCard } from "../utils/card/ibusiness";
 
 
 function ModalSend({ isOpen, setOpen }: { isOpen: boolean, setOpen: Function }): JSX.Element {
@@ -23,7 +24,7 @@ function ModalSend({ isOpen, setOpen }: { isOpen: boolean, setOpen: Function }):
                     style={styles.closeBtn}
                     onPress={() => setOpen(!isOpen)}
                 >
-                    <Text style={{...styles.text, ...{color:'#1E1E1E'}}}>Close</Text>
+                    <Text style={{ ...styles.text, ...{ color: '#1E1E1E' } }}>Close</Text>
                 </TouchableOpacity>
 
                 <Text>show</Text>
@@ -37,7 +38,10 @@ function SendGiftCard() {
     const [isOpen, setOpen] = useState<boolean>(false)
     const r = useRoute()
 
-    const { card }: any = r.params
+    const { BusId }: Readonly<IBusinessCard | undefined> = r.params
+    
+    console.log(BusId);
+    
 
 
     return (
@@ -45,12 +49,12 @@ function SendGiftCard() {
             style={styles.container}
         >
 
-            <BusinessCard
+            {/* <BusinessCard
                 BusId={card.BusId}
                 BusinessName={card.BusinessName}
                 Amount={card.Amount}
                 Promotion={card.Promotion}
-            />
+            /> */}
             <TouchableOpacity
                 style={styles.buyBtn}
                 onPress={() => setOpen(true)}

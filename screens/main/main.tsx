@@ -8,6 +8,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TxHome from "../TxHome/TxHome";
 import Gift from "../Gift/Gift";
 import SendGiftCard from "../SendGiftCard/SendGiftCard";
+import ReciveGiftCard from "../ReciveGiftCard/ReceiveGiftCard";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator()
@@ -36,7 +37,7 @@ const TabBottom = () => {
 
                     }
 
-                    if (route.name === "send2") {
+                    if (route.name === "gift") {
                         return (
                             <View
                                 style={{
@@ -58,6 +59,19 @@ const TabBottom = () => {
                             >
                                 <Image
                                     source={require('../public/sendcircle.png')}
+                                />
+                            </View>
+                        )
+                    }
+                    if (route.name === "recive-card") {
+                            return (
+                            <View
+                                style={{
+                                    marginTop: 20,
+                                }}
+                            >
+                                <Image
+                                    source={require('../public/giftcard.png')}
                                 />
                             </View>
                         )
@@ -99,7 +113,7 @@ const TabBottom = () => {
                 options={{ title: "" }}
 
             />
-            <Tab.Screen name="send2" component={Gift}
+            <Tab.Screen name="gift" component={Gift}
                 options={{ title: "" }}
 
             />
@@ -107,6 +121,10 @@ const TabBottom = () => {
                 options={{ title: "" }}
 
             />
+            <Tab.Screen name="recive-card" component={ReciveGiftCard} 
+                options={{title : ""}}
+            />
+
             <Tab.Screen name="send" component={Send}
                 options={{ title: "" }}
             />
@@ -135,7 +153,7 @@ function Main() {
 
                 />
                 <Stack.Screen name="Transaction" component={Trasaction} />
-                <Stack.Screen name="Send Gift" component={SendGiftCard} />
+                <Stack.Screen name="SendGift" component={SendGiftCard} />
             </Stack.Navigator>
         </NavigationContainer>
     );
