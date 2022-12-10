@@ -35,12 +35,12 @@ function ModalSend({ isOpen, setOpen }: { isOpen: boolean, setOpen: Function }):
 }
 
 function SendGiftCard() {
-    const [isOpen, setOpen] = useState<boolean>(false)
-    const r = useRoute()
+    // const [isOpen, setOpen] = useState<boolean>(false)
+    // const r = useRoute()
 
-    const { BusId }: Readonly<IBusinessCard | undefined> = r.params
+    // const { BusId }: Readonly<IBusinessCard | undefined> = r.params
     
-    console.log(BusId);
+    // console.log(BusId);
     
 
 
@@ -55,13 +55,15 @@ function SendGiftCard() {
                 Amount={card.Amount}
                 Promotion={card.Promotion}
             /> */}
-            <TouchableOpacity
+            {/* <TouchableOpacity
                 style={styles.buyBtn}
                 onPress={() => setOpen(true)}
             >
                 <Text style={styles.text}>Buy</Text>
             </TouchableOpacity>
-            <ModalSend isOpen={isOpen} setOpen={setOpen} />
+            <ModalSend isOpen={isOpen} setOpen={setOpen} /> */}
+
+            <Text>Send gift</Text>
         </View>
     )
 

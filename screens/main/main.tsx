@@ -9,6 +9,8 @@ import TxHome from "../TxHome/TxHome";
 import Gift from "../Gift/Gift";
 import SendGiftCard from "../SendGiftCard/SendGiftCard";
 import ReciveGiftCard from "../ReciveGiftCard/ReceiveGiftCard";
+import Register from "../Register/Register";
+import Signin from "../Signin/Signin";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator()
@@ -64,7 +66,7 @@ const TabBottom = () => {
                         )
                     }
                     if (route.name === "recive-card") {
-                            return (
+                        return (
                             <View
                                 style={{
                                     marginTop: 20,
@@ -121,8 +123,8 @@ const TabBottom = () => {
                 options={{ title: "" }}
 
             />
-            <Tab.Screen name="recive-card" component={ReciveGiftCard} 
-                options={{title : ""}}
+            <Tab.Screen name="recive-card" component={ReciveGiftCard}
+                options={{ title: "" }}
             />
 
             <Tab.Screen name="send" component={Send}
@@ -148,12 +150,26 @@ function Main() {
                 }
             >
                 <Stack.Screen
+                    name="register"
+                    component={Register}
+                    options={{
+                        headerShown: false
+                    }}
+                />
+                <Stack.Screen
+                    name="signin"
+                    component={Signin}
+                    options={{
+                        headerShown: false
+                    }}
+                />
+                {/* <Stack.Screen
                     name="Send"
                     component={RootTab}
 
                 />
                 <Stack.Screen name="Transaction" component={Trasaction} />
-                <Stack.Screen name="SendGift" component={SendGiftCard} />
+                <Stack.Screen name="SendGift" component={SendGiftCard} /> */}
             </Stack.Navigator>
         </NavigationContainer>
     );
