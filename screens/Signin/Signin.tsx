@@ -1,7 +1,19 @@
 import { useNavigation } from "@react-navigation/native";
-import { StyleSheet, TextInput, Text,  SafeAreaView,  KeyboardAvoidingView, TouchableOpacity, Image } from "react-native";
+import { useState } from "react";
+import { StyleSheet, TextInput, Text, SafeAreaView, KeyboardAvoidingView, TouchableOpacity, Image } from "react-native";
+import { useDispatch } from "react-redux";
+import { newSignin } from "../../redux/auth/auth";
+
 function Signin() {
+
     const navigate = useNavigation()
+    const dispatch: any = useDispatch()
+
+
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+
     return (
         <SafeAreaView style={styles.container}>
             <Image
@@ -10,26 +22,37 @@ function Signin() {
             <KeyboardAvoidingView behavior="padding">
 
                 <TextInput
+                    onChangeText={(email) => setEmail(email)}
                     placeholderTextColor="#16F06D"
                     style={styles.inputStyle}
                     placeholder="Email"
                 />
                 <TextInput
+                    onChangeText={(pwd) => setPassword(pwd)}
                     placeholderTextColor="#16F06D"
                     placeholder="Password"
-                    secureTextEntry={true}
+                    secureTextEntry={false}
                     style={styles.inputStyle}
                 />
-                 <TouchableOpacity
+                <TouchableOpacity
                     style={styles.signinBtn}
-                >   
+                    onPress={() => {
+
+
+                        const payload = { email: email, pwd: password }
+                        dispatch(newSignin(payload))
+                        navigate.navigate('Send' as never,{} as never)
+
+                    }}
+
+                >
                     <Text style={styles.signinTitle}>Signin</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={styles.registerBtn}
-                    onPress={()=>navigate.navigate('register' as never, {} as never)}
+                    onPress={() => navigate.navigate('register' as never, {} as never)}
                 >
-                    <Text style={{color : 'white'}}>I don't have an account.! Register</Text>
+                    <Text style={{ color: 'white' }}>I don't have an account.! Register</Text>
                 </TouchableOpacity>
             </KeyboardAvoidingView>
         </SafeAreaView>

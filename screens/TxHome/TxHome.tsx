@@ -1,9 +1,10 @@
-import React from "react";
+import { NavigationProp, useRoute } from "@react-navigation/native";
+import React, { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
+import { useSelector } from "react-redux";
 import BalanceCard from "../utils/card/balance";
 import { ListData } from "../utils/list/ilist";
 import List from "../utils/list/listarr";
-
 
 
 
@@ -43,19 +44,24 @@ function RenderItem({ data }: { data: ListData }): JSX.Element {
 }
 
 function TxHome() {
+    const { account } = useSelector(state => state.account || {})
+    const { username, balance, wallet_id } = account.wallet
+
     return (
         <View style={style.container}>
+            {/* this wallet component */}
             <BalanceCard
-                Title="Hi 👋"
-                Price={53}
+                Title={"Hi 👋 @" + username}
+                Price={balance}
+                WalletID={wallet_id}
             />
             <View style={style.itemsBoxList}>
-            <List
-                title="Transaction History"
-                data={DATA}
-                renderItem={({ item }) => <RenderItem data={item} />}
+                <List
+                    title="Transaction History"
+                    data={DATA}
+                    renderItem={({ item }) => <RenderItem data={item} />}
 
-            />
+                />
             </View>
         </View>
     );

@@ -113,7 +113,6 @@ const TabBottom = () => {
         >
             <Tab.Screen name="home" component={TxHome}
                 options={{ title: "" }}
-
             />
             <Tab.Screen name="gift" component={Gift}
                 options={{ title: "" }}
@@ -163,13 +162,13 @@ function Main() {
                         headerShown: false
                     }}
                 />
-                {/* <Stack.Screen
+                <Stack.Screen
                     name="Send"
                     component={RootTab}
 
                 />
                 <Stack.Screen name="Transaction" component={Trasaction} />
-                <Stack.Screen name="SendGift" component={SendGiftCard} /> */}
+                <Stack.Screen name="SendGift" component={SendGiftCard} />
             </Stack.Navigator>
         </NavigationContainer>
     );
