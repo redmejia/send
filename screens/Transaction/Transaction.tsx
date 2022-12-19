@@ -1,41 +1,71 @@
 import { useRoute } from "@react-navigation/native";
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import { TextInput, StyleSheet, View, TouchableOpacity, Text } from "react-native";
 import Badge from "../utils/badge/badge";
+import { useSelector, useDispatch } from "react-redux";
+import { wallet2walletTransfer } from "../../redux/wallet/wallet";
 
 
 
 function Trasaction() {
 
-    const [amount, setAmount] = useState<number>(0)
+
+    const { account } = useSelector(state => state.account)
+    const { walletToWalletStatus } = useSelector(state => state.wallet)
+
+    const [amount, setAmount] = useState("")
 
     const r = useRoute()
 
-    const { tx }: any = r.params;
+    const { reciver }: any = r.params;
 
-    let myAmount : string =  "53.00";
-    
+
+    const dispatch: any = useDispatch()
+
+
+    const { balance, username, user_id, wallet_id } = account.wallet
+    let myBalance: string = balance.toString();
+
     return (
 
         <View style={styles.container}>
 
-            <Badge Title={`$${myAmount}`} style={{width : myAmount.length* 16}} />
+            <Badge Title={`$${myBalance}`} style={{ width: myBalance.length * 16 }} />
             <View style={styles.sendToBox} >
-                <Text style={styles.textSendTo}>{tx.Name}</Text>
+                <Text style={styles.textSendTo}>{"to @" + reciver.username}</Text>
             </View>
             <TextInput
                 placeholder="$"
                 keyboardType="number-pad"
                 style={styles.textInput}
                 onChangeText={(a) => {
-                    const amount: number = (a as unknown as number)
-                    setAmount(amount)
+                    // const amount: number = (a as unknown as number)
+                    setAmount(a)
                 }}
             />
-            {amount > 0 &&
+            {amount.length > 0 &&
 
                 <TouchableOpacity
                     style={styles.btnSend}
+                    onPress={() => {
+                        const txIntent = {
+                            sender : {
+                                username : username,
+                                user_id : user_id,
+                                wallet_id : wallet_id,
+                                amount : amount
+                            },
+                            reciver : {
+                                username: reciver.username,
+                                wallet_id : reciver.wallet_id
+                            }
+                        }
+                        dispatch(wallet2walletTransfer(txIntent))
+                        if (walletToWalletStatus.proceed && walletToWalletStatus.tx_status_code) {
+                            console.log("King Ruls this place");
+                        }
+
+                    }}
                 >
                     <Text style={styles.textSendBtn}>Send</Text>
                 </TouchableOpacity>

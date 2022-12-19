@@ -1,6 +1,6 @@
-import { NavigationProp, useRoute } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import React, { useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useSelector } from "react-redux";
 import BalanceCard from "../utils/card/balance";
 import { ListData } from "../utils/list/ilist";
@@ -47,14 +47,22 @@ function TxHome() {
     const { account } = useSelector(state => state.account || {})
     const { username, balance, wallet_id } = account.wallet
 
+
+    const navigate = useNavigation()
+
     return (
         <View style={style.container}>
             {/* this wallet component */}
-            <BalanceCard
-                Title={"Hi 👋 @" + username}
-                Price={balance}
-                WalletID={wallet_id}
-            />
+            <TouchableOpacity
+                onPress={()=> navigate.navigate("Wallet", {})}
+            >
+
+                <BalanceCard
+                    Title={"Hi 👋 @" + username}
+                    Price={balance}
+                    WalletID={wallet_id}
+                />
+            </TouchableOpacity>
             <View style={style.itemsBoxList}>
                 <List
                     title="Transaction History"

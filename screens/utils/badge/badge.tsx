@@ -6,7 +6,7 @@ interface Props {
     Title: string,
 }
 function Badge(props: Props) {
-    console.log(props.style);
+    // console.log(props.style);
     
     return (
         <View style={styles.badgeContainer}>

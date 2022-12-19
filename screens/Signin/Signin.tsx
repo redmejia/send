@@ -3,6 +3,7 @@ import { useState } from "react";
 import { StyleSheet, TextInput, Text, SafeAreaView, KeyboardAvoidingView, TouchableOpacity, Image } from "react-native";
 import { useDispatch } from "react-redux";
 import { newSignin } from "../../redux/auth/auth";
+import {AsyncStorage} from 'react-native';
 
 function Signin() {
 
@@ -13,7 +14,7 @@ function Signin() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-
+     
     return (
         <SafeAreaView style={styles.container}>
             <Image
@@ -31,7 +32,7 @@ function Signin() {
                     onChangeText={(pwd) => setPassword(pwd)}
                     placeholderTextColor="#16F06D"
                     placeholder="Password"
-                    secureTextEntry={false}
+                    secureTextEntry={true}
                     style={styles.inputStyle}
                 />
                 <TouchableOpacity

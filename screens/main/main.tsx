@@ -11,6 +11,7 @@ import SendGiftCard from "../SendGiftCard/SendGiftCard";
 import ReciveGiftCard from "../ReciveGiftCard/ReceiveGiftCard";
 import Register from "../Register/Register";
 import Signin from "../Signin/Signin";
+import Wallet from "../Wallet/Wallet";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator()
@@ -113,6 +114,7 @@ const TabBottom = () => {
         >
             <Tab.Screen name="home" component={TxHome}
                 options={{ title: "" }}
+        
             />
             <Tab.Screen name="gift" component={Gift}
                 options={{ title: "" }}
@@ -146,7 +148,9 @@ function Main() {
                             backgroundColor: "#16F06D",
                         }
                     }
+                    
                 }
+
             >
                 <Stack.Screen
                     name="register"
@@ -165,10 +169,13 @@ function Main() {
                 <Stack.Screen
                     name="Send"
                     component={RootTab}
+                    options={{headerBackVisible : true}} // change this  to true to make visible
 
                 />
                 <Stack.Screen name="Transaction" component={Trasaction} />
                 <Stack.Screen name="SendGift" component={SendGiftCard} />
+                <Stack.Screen name="Wallet" component={Wallet} />
+
             </Stack.Navigator>
         </NavigationContainer>
     );
